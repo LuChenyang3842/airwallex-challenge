@@ -36,7 +36,6 @@ export const THEME_COLOR = Object.freeze({
   secondary: '#b0bec5',
   secondaryLight: '#e2f1f8',
   secondaryDark: '#808e95',
-  primaryText: '#ffffff',
-  secondaryText: '#000000',
+  black: '#000000',
   white: '#ffffff',
 });
