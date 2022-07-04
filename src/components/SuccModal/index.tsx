@@ -1,11 +1,8 @@
 import { Modal } from 'antd';
 import React from 'react';
-import {
-  HorizontalFlexWrapper,
-  VerticalFlexWrapper,
-} from 'src/styledComponents/flexWrapper';
-import { ModelTitle } from 'src/styledComponents/modalTitle';
-import { Spacer } from 'src/styledComponents/spacer';
+import { VerticalFlexWrapper } from 'src/styledComponents/FlexWrapper';
+import { ModelTitle } from 'src/styledComponents/ModalTitle';
+import { Spacer } from 'src/styledComponents/Spacer';
 import { FinishButton, SuccessText, SuccessTextWrapper } from './styled';
 
 interface ISuccModalProps {

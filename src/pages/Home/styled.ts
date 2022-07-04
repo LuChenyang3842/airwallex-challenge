@@ -6,6 +6,7 @@ import {
   MEDIA_QUERY,
   THEME_COLOR,
 } from 'src/constants/styleConstants';
+import { LightButton } from 'src/styledComponents/Buttons';
 
 export const PageContent = styled(Layout.Content)`
   padding: 0;
@@ -17,7 +18,7 @@ export const PageContent = styled(Layout.Content)`
 `;
 
 export const Title = styled.text`
-  color: ${THEME_COLOR.black};
+  color: ${THEME_COLOR.primaryDark};
   font-size: 56px;
   font-weight: bold;
   line-height: 56px;
@@ -44,7 +45,7 @@ export const Title = styled.text`
 `;
 
 export const SubTitle = styled.div`
-  color: ${THEME_COLOR.black};
+  color: ${THEME_COLOR.primaryDark};
   font-size: 28px;
   font-weight: normal;
   @media screen and ${MEDIA_QUERY.XL} {
@@ -64,16 +65,16 @@ export const SubTitle = styled.div`
   }
 `;
 
-export const RequestButton = styled(Button)`
+export const RequestButton = styled(LightButton)`
   font-size: 20px;
-  font-color: ${THEME_COLOR.black};
-  height: 70px;
+  font-color: ${THEME_COLOR.primaryDark};
+  height: 50px;
   @media screen and ${MEDIA_QUERY.XL} {
-    height: 70px;
-    font-size: 28px;
+    height: 50px;
+    font-size: 20px;
   }
   @media screen and ${MEDIA_QUERY.MD} {
-    font-size: 20px;
+    font-size: 18px;
     height: 40px;
   }
 

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { Button } from 'antd';
+import { DarkButton } from 'src/styledComponents/Buttons';
 
-export const SubmitButton = styled(Button)`
+export const SubmitButton = styled(DarkButton)`
   width: 100%;
 `;

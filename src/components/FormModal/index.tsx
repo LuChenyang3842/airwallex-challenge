@@ -1,8 +1,8 @@
-import { Form, Modal } from 'antd';
+import { Alert, Form, Modal } from 'antd';
 import Input from 'antd/lib/input/Input';
 import React, { useState } from 'react';
 import { requestInvite } from 'src/service/api';
-import { ModelTitle } from 'src/styledComponents/modalTitle';
+import { ModelTitle } from 'src/styledComponents/ModalTitle';
 import SuccModal from 'src/components/SuccModal';
 import { SubmitButton } from './styled';
 
@@ -22,16 +22,19 @@ const FormModal: React.FC<IFormModalProps> = (props) => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [succModalVisible, setSuccModaltVisible] = useState<boolean>(false);
+  const [errorMsg, setErrorMsg] = useState('');
   const onFinish = async (values: IFormData) => {
     try {
-      await requestInvite({
+      const res = await requestInvite({
         name: values.fullname,
         email: values.email,
       });
+      console.log('res', res);
       handleOk();
       setSuccModaltVisible(true);
-    } catch (e) {
-      console.log(e);
+    } catch (e: any) {
+      console.log('e: ', e);
+      setErrorMsg(e?.data.errorMessage ?? '');
     } finally {
       setLoading(false);
     }
@@ -39,6 +42,7 @@ const FormModal: React.FC<IFormModalProps> = (props) => {
   // submit form
   const onClickSubmit = () => {
     console.log('click submit');
+    setErrorMsg('');
     setLoading(true);
     form.submit();
   };
@@ -131,6 +135,7 @@ const FormModal: React.FC<IFormModalProps> = (props) => {
               Submit
             </SubmitButton>
           </Form.Item>
+          {errorMsg && <Alert type="error" message={errorMsg} showIcon />}
         </Form>
       </Modal>
     </>

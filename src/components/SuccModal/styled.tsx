@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
-import { Button } from 'antd';
-import { MEDIA_QUERY, THEME_COLOR } from 'src/constants/styleConstants';
+import { THEME_COLOR } from 'src/constants/styleConstants';
+import { LightButton } from 'src/styledComponents/Buttons';
 
-export const FinishButton = styled(Button)`
+export const FinishButton = styled(LightButton)`
   width: 60%;
 `;
 

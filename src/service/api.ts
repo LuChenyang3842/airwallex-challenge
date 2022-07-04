@@ -6,9 +6,10 @@ interface IRequestInviteData {
   email: string;
 }
 
-export const requestInvite = (data: IRequestInviteData) =>
-  service({
+export const requestInvite = async (data: IRequestInviteData) => {
+  await service({
     url: urlPath.requestInvitePath,
     method: 'POST',
     data: data,
   });
+};

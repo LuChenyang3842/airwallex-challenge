@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { PageContent, Title, SubTitle, RequestButton } from './styled';
 import PageHeader from 'src/components/PageHeader';
 import PageFooter from 'src/components/PageFooter';
-import { Spacer } from 'src/styledComponents/spacer';
+import { Spacer } from 'src/styledComponents/Spacer';
 import FormModal from 'src/components/FormModal';
 const Home: React.FC = () => {
   const [visible, setVisible] = useState<boolean>(false);
