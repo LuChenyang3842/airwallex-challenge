@@ -17,6 +17,15 @@ interface IFormData {
   confirmEmail: string;
 }
 
+export const ErrorWording = {
+  requireName: 'Full name is required',
+  requireEmail: 'Email is required',
+  requireConfirm: 'Confirm email is required',
+  invalidName: 'Name must be more then 3 characters',
+  invalidEmail: 'Please enter a valid email!',
+  invalidConfirm: 'The two emails that you entered do not match',
+};
+
 const FormModal: React.FC<IFormModalProps> = (props) => {
   const { visible, handleCancel, handleOk } = props;
   const [form] = Form.useForm();
@@ -77,15 +86,13 @@ const FormModal: React.FC<IFormModalProps> = (props) => {
           <Form.Item
             name="fullname"
             rules={[
-              { required: true, message: 'Full name is required' },
+              { required: true, message: ErrorWording.requireName },
               () => ({
                 validator(_, value) {
                   if (!value || value.trim().length >= 3) {
                     return Promise.resolve();
                   }
-                  return Promise.reject(
-                    new Error('Name must be more then 3 characters'),
-                  );
+                  return Promise.reject(new Error(ErrorWording.invalidName));
                 },
               }),
             ]}
@@ -95,10 +102,10 @@ const FormModal: React.FC<IFormModalProps> = (props) => {
           <Form.Item
             name="email"
             rules={[
-              { required: true, message: 'Email is required' },
+              { required: true, message: ErrorWording.requireEmail },
               {
                 type: 'email',
-                message: 'Please enter a correct email!',
+                message: ErrorWording.invalidEmail,
               },
             ]}
           >
@@ -107,20 +114,18 @@ const FormModal: React.FC<IFormModalProps> = (props) => {
           <Form.Item
             name="confirmEmail"
             rules={[
-              { required: true, message: 'Confirm email is required' },
+              { required: true, message: ErrorWording.requireConfirm },
               ({ getFieldValue }) => ({
                 validator(_, value) {
                   if (!value || getFieldValue('email') == value) {
                     return Promise.resolve();
                   }
-                  return Promise.reject(
-                    new Error('The two emails that you entered do not match'),
-                  );
+                  return Promise.reject(new Error(ErrorWording.invalidConfirm));
                 },
               }),
             ]}
           >
-            <Input placeholder="Confirm Email" />
+            <Input placeholder="Confirm Email" data-testid="confirm-input" />
           </Form.Item>
           <Form.Item>
             <SubmitButton
