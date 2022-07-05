@@ -22,12 +22,17 @@ jobs:
     steps:
     - name: checkout repo
       uses: actions/checkout@v3
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+
     - name: install dependencies
       run: npm install
+
     - name: run the test
-      run: npm run test-all
+      run: npm test -- --coverage --watchAll
+          - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
