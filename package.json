@@ -6,6 +6,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test-all":"react-scripts test --coverage a",
     "eject": "react-scripts eject",
     "prepare": "husky install"
   },
@@ -46,6 +47,27 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/src/setupProxy.js",
+      "<rootDir>/src/reportWebVitals.js",
+      "<rootDir>/src/index.js"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/node_modules/",
+      "!<rootDir>/path/to/dir/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 75,
+        "functions": 75,
+        "lines": 75,
+        "statements": 75
+      }
+    },
+    "coverageReporters": ["text"]
   },
   "devDependencies": {
     "@types/react-test-renderer": "^18.0.0",

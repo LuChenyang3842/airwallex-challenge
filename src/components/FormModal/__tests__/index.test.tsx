@@ -83,7 +83,9 @@ describe('From Modal test', () => {
 
     const buttonsClose = baseElement.getElementsByClassName('ant-modal-close');
     expect(buttonsClose.length).toBe(1);
-    fireEvent.click(buttonsClose[0]);
+    act(() => {
+      fireEvent.click(buttonsClose[0]);
+    });
     expect(handleCancel).toBeCalledTimes(1);
   });
 
@@ -95,7 +97,9 @@ describe('From Modal test', () => {
         handleCancel={handleCancel}
       />,
     );
-    clickSubmitBtn();
+    act(() => {
+      clickSubmitBtn();
+    });
     await waitFor(() => {
       const erroMsgs = baseElement.getElementsByClassName(
         'ant-form-item-explain-error',
@@ -115,9 +119,11 @@ describe('From Modal test', () => {
         handleCancel={handleCancel}
       />,
     );
-    mockValidInputs();
-    inputName(mockInvalidName);
-    clickSubmitBtn();
+    act(() => {
+      mockValidInputs();
+      inputName(mockInvalidName);
+      clickSubmitBtn();
+    });
     await waitFor(() => {
       const erroMsgs = baseElement.getElementsByClassName(
         'ant-form-item-explain-error',
@@ -135,10 +141,12 @@ describe('From Modal test', () => {
         handleCancel={handleCancel}
       />,
     );
-    inputName(mockValidName);
-    inputEmail(mockInvalidEmail);
-    inputConfirm(mockInvalidName);
-    clickSubmitBtn();
+    act(() => {
+      inputName(mockValidName);
+      inputEmail(mockInvalidEmail);
+      inputConfirm(mockInvalidName);
+      clickSubmitBtn();
+    });
     await waitFor(() => {
       const erroMsgs = baseElement.getElementsByClassName(
         'ant-form-item-explain-error',
@@ -178,8 +186,10 @@ describe('From Modal test', () => {
         handleCancel={handleCancel}
       />,
     );
-    mockValidInputs();
-    clickSubmitBtn();
+    act(() => {
+      mockValidInputs();
+      clickSubmitBtn();
+    });
     await waitFor(() => {
       const erroMsgs = baseElement.getElementsByClassName(
         'ant-form-item-explain-error',
