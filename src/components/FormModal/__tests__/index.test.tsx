@@ -23,7 +23,8 @@ describe('From Modal test', () => {
   beforeEach(() => {
     visible = true;
   });
-  // afterEach(cleanup);
+
+  afterEach(cleanup);
 
   it('Form Modal renders correctly -- close', () => {
     visible = false;
