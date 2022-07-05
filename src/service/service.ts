@@ -1,41 +1,38 @@
 import axios from 'axios';
 import { message } from 'antd';
 
+export const timeoutMessage =
+  'Request time-out, please check the network or contact the administrator';
+export const serverErrorMessage = 'Server error, Please contact admin！';
+
 const service = axios.create({
   withCredentials: false,
-  timeout: 20000, // 20s timeout
+  timeout: 2000, // 20s timeout
   validateStatus() {
     return true;
   },
 });
-service.defaults.headers.post['Content-Type'] =
-  'application/x-www-form-urlencoded;charset=utf-8';
 
 // request interceptor
-service.interceptors.request.use(
-  (config) => {
-    return config;
-  },
-  (err) => {
-    err.message = 'Server error, Please contact admin！';
-    message.error(err.message);
-    return Promise.reject(err);
-  },
-);
+service.interceptors.request.use((config) => {
+  config.headers = {
+    'Content-Type': 'application/json;charset=utf-8',
+  };
+  return config;
+});
 
 // response interceptor
 service.interceptors.response.use(
   (response) => {
     const status = response.status;
-    if (status >= 200 && status < 400) {
+    if (status < 400) {
       return response;
     } else {
       return Promise.reject(response);
     }
   },
   (err) => {
-    err.message =
-      'Request time-out, please check the network or contact the administrator';
+    err.message = timeoutMessage;
 
     message.error(err.message);
     return Promise.reject(err);
