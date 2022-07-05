@@ -7,10 +7,11 @@ export const serverErrorMessage = 'Server error, Please contact admin！';
 
 const service = axios.create({
   withCredentials: false,
-  timeout: 2000, // 20s timeout
+  timeout: 20000, // 20s timeout
   validateStatus() {
     return true;
   },
+  baseURL: 'https://l94wc2001h.execute-api.ap-southeast-2.amazonaws.com',
 });
 
 // request interceptor

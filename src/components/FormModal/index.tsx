@@ -40,6 +40,7 @@ const FormModal: React.FC<IFormModalProps> = (props) => {
       });
       handleOk();
       setSuccModaltVisible(true);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
       setErrorMsg(e?.data.errorMessage ?? '');
     } finally {
