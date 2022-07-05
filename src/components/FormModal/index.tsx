@@ -25,15 +25,13 @@ const FormModal: React.FC<IFormModalProps> = (props) => {
   const [errorMsg, setErrorMsg] = useState('');
   const onFinish = async (values: IFormData) => {
     try {
-      const res = await requestInvite({
+      await requestInvite({
         name: values.fullname,
         email: values.email,
       });
-      console.log('res', res);
       handleOk();
       setSuccModaltVisible(true);
     } catch (e: any) {
-      console.log('e: ', e);
       setErrorMsg(e?.data.errorMessage ?? '');
     } finally {
       setLoading(false);
@@ -41,7 +39,6 @@ const FormModal: React.FC<IFormModalProps> = (props) => {
   };
   // submit form
   const onClickSubmit = () => {
-    console.log('click submit');
     setErrorMsg('');
     setLoading(true);
     form.submit();
@@ -93,7 +90,7 @@ const FormModal: React.FC<IFormModalProps> = (props) => {
               }),
             ]}
           >
-            <Input placeholder="Full Name" />
+            <Input placeholder="Full Name" data-testid="fullname-input" />
           </Form.Item>
           <Form.Item
             name="email"
@@ -105,7 +102,7 @@ const FormModal: React.FC<IFormModalProps> = (props) => {
               },
             ]}
           >
-            <Input placeholder="Email" />
+            <Input placeholder="Email" data-testid="email-input" />
           </Form.Item>
           <Form.Item
             name="confirmEmail"
@@ -131,6 +128,7 @@ const FormModal: React.FC<IFormModalProps> = (props) => {
               type="primary"
               size="large"
               onClick={onClickSubmit}
+              data-testid="submit"
             >
               Submit
             </SubmitButton>
