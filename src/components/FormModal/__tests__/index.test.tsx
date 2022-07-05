@@ -177,24 +177,4 @@ describe('From Modal test', () => {
       expect(erroMsgs[0].textContent).toBe(ErrorWording.invalidConfirm);
     });
   });
-
-  it('error message correctly displayed when submitting- all correct', async () => {
-    const { baseElement } = render(
-      <FormModal
-        visible={visible}
-        handleOk={handleOk}
-        handleCancel={handleCancel}
-      />,
-    );
-    act(() => {
-      mockValidInputs();
-      clickSubmitBtn();
-    });
-    await waitFor(() => {
-      const erroMsgs = baseElement.getElementsByClassName(
-        'ant-form-item-explain-error',
-      );
-      expect(erroMsgs.length).toBe(0);
-    });
-  });
 });
