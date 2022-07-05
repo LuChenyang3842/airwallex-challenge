@@ -1,7 +1,7 @@
 import { Alert, Form, Modal } from 'antd';
 import Input from 'antd/lib/input/Input';
 import React, { useState } from 'react';
-import { requestInvite } from 'src/service/api';
+import { requestInvite } from 'src/service/requestInvite';
 import { ModelTitle } from 'src/styledComponents/ModalTitle';
 import SuccModal from 'src/components/SuccModal';
 import { SubmitButton } from './styled';

@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageFooter renders correctly 1`] = `
+<body>
+  <div>
+    <footer
+      class="ant-layout-footer css-1bowpb8"
+    >
+      <div
+        class="css-1ysqs5i"
+      >
+        Made with ♥ in Melbourne 
+      </div>
+      <div
+        class="css-1ysqs5i"
+      >
+        © 2016 Broccoli & Co. All Rights Reserved.
+         
+      </div>
+    </footer>
+  </div>
+</body>
+`;

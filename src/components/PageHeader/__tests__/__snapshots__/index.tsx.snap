@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageHeader renders correctly 1`] = `
+<body>
+  <div>
+    <header
+      class="ant-layout-header css-o2jn96"
+    >
+      <div
+        class="css-74tcac"
+      >
+        BROCCOLI & CO.
+      </div>
+       
+    </header>
+  </div>
+</body>
+`;
